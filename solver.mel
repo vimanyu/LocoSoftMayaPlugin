@@ -1,0 +1,76 @@
+//createNode LSSolverNode -n LSSolverNode1;
+//connectAttr TetgenShape1.outMesh LSSolverNode1.restShape;
+//disconnectAttr LSTetgenNode1.outputMesh TetgenShape1.inMesh;
+//connectAttr LSSolverNode1.deformed TetgenShape1.inMesh;
+//connectAttr time1.outTime LSSolverNode1.time;
+//connectAttr LSTetgenNode1.ofp LSSolverNode1.ifp; 
+
+
+//string $selectedItems[] = `ls -sl -dag`;
+//int $numItems = size($selectedItems);
+
+
+string $shapeNodes[] = `listRelatives -s`;
+int $shapeNodesSize = `size $shapeNodes`;
+if($shapeNodesSize == 0)
+    error "Please select tetrahedralized geometry to connect to solver";
+
+string $solverNodes[] = `listConnections -s true -d false -t LSSolverNode $shapeNodes`;
+int $solverNodesSize = `size $solverNodes`;
+
+if ($solverNodesSize != 0)
+{
+    error "Solver already connected. Please delete existing solver, and create a new one";
+}
+
+string $tetgenNodes[] = `listConnections -s true -d false -t LSTetgenNode $shapeNodes`;
+int $numItems = size($tetgenNodes);
+print ("Number of tetgenNodes =" + $numItems+"\n");
+if ($numItems == 0)
+    error "Please select atleast one tetrahedralized geometry in order to run the command";
+else
+{
+/*
+int $i = 0;
+int $j = 0;
+string $tetgenNodes[] = `ls -type "LSTetgenNode"`;
+for( $i=0; $i < size($selectedItems); $i = $i+2)
+{
+	$j = $i+1;
+	string $tetgenNode = $tetgenNodes[$i];
+	string $solverNode = `createNode LSSolverNode`;
+	string $outputS = $selectedItems[$j];
+	connectAttr ($tetgenNode+".outputMesh") ($solverNode+".restShape");
+	disconnectAttr ($tetgenNode+".outputMesh") ($outputS+".inMesh");
+	connectAttr ($solverNode+".deformed") ($outputS+".inMesh");
+	connectAttr time1.outTime ($solverNode+".time");
+	connectAttr ($tetgenNode+".ofp") ($solverNode+".ifp");
+	*/
+
+
+	int $i = 0;
+	for( $i=0; $i < size($tetgenNodes); $i++)
+	{
+		string $solverNode = `createNode LSSolverNode`;
+		string $shapeNodes[] = `listConnections -s false -shapes true -type "mesh" $tetgenNodes[$i]`;
+        string $transformNodes[] = `listRelatives -p $shapeNodes`;
+		disconnectAttr ($tetgenNodes[$i]+".outputMesh") ($shapeNodes[0]+".inMesh");
+		delete $shapeNodes[0];
+		connectAttr ($tetgenNodes[$i]+".outputMesh") ($solverNode+".restShape");
+		connectAttr ($tetgenNodes[$i]+".outVerticesArray") ($solverNode+".restVertices");
+		connectAttr ($tetgenNodes[$i]+".outElementsArray") ($solverNode+".restElements");
+        connectAttr ($transformNodes[0]+".worldMatrix[0]") ($solverNode+".twm");
+        delete $transformNodes[0];
+
+		//connectAttr ($shapeNodes[0]+".outMesh") ($solverNode+".restShape");
+		//connectAttr ($solverNode+".deformed") ($shapeNodes[0]+".inMesh");
+		string $solverT = `createNode transform`;
+		string $solverS = `createNode mesh`;
+		connectAttr ($solverNode+".deformed") ($solverS+".inMesh");
+		connectAttr time1.outTime ($solverNode+".time");
+		parent -s -relative $solverS $solverT;
+
+		//connectAttr ($tetgenNodes[$i]+".ofp") ($solverNode+".ifp"); // no longer needed
+		sets -add initialShadingGroup $solverS;
+	}
+}

@@ -1,0 +1,83 @@
+global string $gLocoSoftStartFramePath;
+global string $gLocoSoftEndFramePath;
+global string $gLocoSoftOuputFolderPath;
+global string $gLocoSoftBakeGeometryWindowPath;
+
+global proc debugLocoSoftBakeGeometryUI ()
+{
+	global string $gLocoSoftStartFramePath;
+	global string $gLocoSoftEndFramePath;
+	global string $gLocoSoftOuputFolderPath;
+	global string $gLocoSoftBakeGeometryWindowPath;
+	
+	int $start = `intSliderGrp -query -value $gLocoSoftStartFramePath`;
+	print($start + "\n");
+	
+	int $end = `intSliderGrp -query -value $gLocoSoftEndFramePath`;
+	print($end + "\n");
+	
+	string $filePath = `textField -query -text $gLocoSoftOuputFolderPath`;
+	print($filePath + "\n");
+}
+
+global proc LocoSoftBakeGeometry()
+{
+	global string $gLocoSoftStartFramePath;
+	global string $gLocoSoftEndFramePath;
+	global string $gLocoSoftOuputFolderPath;
+	global string $gLocoSoftBakeGeometryWindowPath;
+	
+	int $start = `intSliderGrp -query -value $gLocoSoftStartFramePath`;
+	print($start + "\n");
+	
+	int $end = `intSliderGrp -query -value $gLocoSoftEndFramePath`;
+	print($end + "\n");
+	
+	string $filePath = `textField -query -text $gLocoSoftOuputFolderPath`;
+	print($filePath + "\n");
+	
+	string $cmd = "-frameRange "+$start+" "+$end+" -file "+$filePath;
+	print ($cmd);
+	AbcExport -j $cmd;
+}
+
+global proc deleteLocoSoftBakeGeometryUI()
+{
+	global string $gLocoSoftBakeGeometryWindowPath;
+	deleteUI -window $gLocoSoftBakeGeometryWindowPath;
+}
+
+global proc drawLocoSoftBakeGeometryUI()
+{
+	global string $gLocoSoftStartFramePath;
+	global string $gLocoSoftEndFramePath;
+	global string $gLocoSoftOuputFolderPath;
+	global string $gLocoSoftBakeGeometryWindowPath;
+	
+	$gLocoSoftBakeGeometryWindowPath = `window -widthHeight 580 150 -t "LocoSoft: Bake Geometry Options"`;
+	columnLayout;
+		
+		columnLayout -w 580 -columnAttach "both" 0 -adjustableColumn true;
+		columnLayout -w 580 -columnAttach "both" 0 -adjustableColumn true;
+					
+			frameLayout -label "LSystem Parameters" -cll true
+				-borderStyle "in";
+				int $minTime = `playbackOptions -q -minTime`;
+				int $maxTime = `playbackOptions -q -maxTime`;
+				$gLocoSoftStartFramePath = `intSliderGrp -label "Start Frame" -field true
+					-minValue $minTime -maxValue $maxTime -value $minTime -width 400`;
+					
+				$gLocoSoftEndFramePath = `intSliderGrp -label "End Frame" -field true
+					-minValue $minTime -maxValue $maxTime -value 1.0 -width 400`;
+					
+				$gLocoSoftOuputFolderPath = `textField -text "Output File Path" -width 400`;
+						
+				rowLayout -numberOfColumns 2 -columnWidth2 300 300
+					-columnAttach2 "both" "both" -adjustableColumn true;;
+					button -label "Bake" -command "LocoSoftBakeGeometry";
+					button -label "Cancel" -command "deleteLocoSoftBakeGeometryUI";
+
+	showWindow;
+}
+
+drawLocoSoftBakeGeometryUI();

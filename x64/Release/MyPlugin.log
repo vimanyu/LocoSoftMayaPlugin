@@ -1,0 +1,61 @@
+﻿Build started 10/9/2013 6:09:47 PM.
+     1>Project "G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\CIS660\MyPlugin.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         G:\software\VisualStudio2010\VC\bin\x86_amd64\CL.exe /c /I. /IG:\software\Autodesk\Maya2013\include /I"C:\Program Files\Autodesk\Maya2013\include" /I"..\LocoSoft Maya\tetgen\include" /I./glm /I.\tetgen\include /I.\vega /Zi /nologo /W3 /WX- /O2 /Ob1 /D NDEBUG /D WIN32 /D _WINDOWS /D NT_PLUGIN /D REQUIRE_IOSTREAM /D _VC80_UPGRADE=0x0710 /D _WINDLL /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Release/" /Fd".\Release/MyPlugin.pdb" /Gd /TP /wd4244 /wd4305 /wd4018 /errorReport:prompt Source\LSComponentNode.cpp Source\LSSolverNode.cpp Source\PluginMain.cpp Source\LSTetgenNode.cpp Source\soft_body_sim.cpp /GR /GS /EHac 
+     1>cl : Command line warning D9025: overriding '/EHs' with '/EHa'
+         LSComponentNode.cpp
+         LSSolverNode.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(316): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(317): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(326): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(329): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+         PluginMain.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(316): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(317): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(326): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(329): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+         LSTetgenNode.cpp
+         soft_body_sim.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(316): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(317): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(326): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\cis660\vega\volumetricMesh.h(329): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2010\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Source\soft_body_sim.cpp(200): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+         Generating Code...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\CIS660\x64\Release\LocoSoft.mll) does not match the Linker's OutputFile property value (G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\CIS660\LocoSoft.mll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         G:\software\VisualStudio2010\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:".\LocoSoft.mll" /INCREMENTAL:NO /NOLOGO /LIBPATH:G:\software\Autodesk\Maya2013\lib /LIBPATH:"C:\Program Files\Autodesk\Maya2013\lib" /LIBPATH:.\tetgen\lib\x64\release /LIBPATH:.\vega\lib odbc32.lib odbccp32.lib OpenMaya.lib OpenMayaAnim.lib OpenMayaRender.lib Foundation.lib tetgen64.lib Vega.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Release\LocoSoft.mll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:".\Release/MyPlugin.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Release/MyPlugin.lib" /MACHINE:X64 /DLL .\Release/LSComponentNode.obj
+         .\Release/LSSolverNode.obj
+         .\Release/PluginMain.obj
+         .\Release/LSTetgenNode.obj
+         .\Release/soft_body_sim.obj /export:initializePlugin /export:uninitializePlugin  
+         tetgen64.lib(tetgen.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+            Creating library .\Release/MyPlugin.lib and object .\Release/MyPlugin.exp
+         Generating code
+         Finished generating code
+         MyPlugin.vcxproj -> G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\CIS660\x64\Release\LocoSoft.mll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:".\LocoSoft.mll;#2" /manifest x64\Release\LocoSoft.mll.intermediate.manifest
+     1>Done Building Project "G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\CIS660\MyPlugin.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:32.17
