@@ -35,7 +35,6 @@ MObject LSComponentNode::out_vertIndicesArray;
 MStatus LSComponentNode::compute(const MPlug& plug, MDataBlock& data)
 {
 	MStatus stat;
-	//cout << "blehhhhh" << endl;
 	if (plug == out_vertIndicesArray)
 	{
 		// retrieve array from in_vertIndicesArray
@@ -67,7 +66,6 @@ MStatus LSComponentNode::compute(const MPlug& plug, MDataBlock& data)
 		delete[] debug2;
 
 
-		//cout << "bbbbbbbbbbbbbbbblehhhhh" << endl;
 		data.setClean(plug);
 	}
 
@@ -103,7 +101,6 @@ MStatus LSComponentNode::initialize()
 	returnStatus = attributeAffects(in_vertIndicesArray, out_vertIndicesArray);
 	McheckErr(returnStatus,"ERROR in attributeAffects: LSTetgenNode inputMesh - outputMesh\n");
 
-	//cout << "bleh" << endl;
 
 	return MS::kSuccess;
 }

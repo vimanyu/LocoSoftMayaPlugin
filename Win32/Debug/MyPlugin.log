@@ -1,0 +1,30 @@
+﻿Build started 10/9/2013 6:44:16 PM.
+     1>Project "G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\LocoSoftMayaPlugin\MyPlugin.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         G:\software\VisualStudio2012\VC\bin\CL.exe /c /I. /I"C:\Program Files\Autodesk\Maya2012\include" /Zi /nologo /W3 /WX- /Od /Oy- /D _DEBUG /D WIN32 /D _WINDOWS /D NT_PLUGIN /D REQUIRE_IOSTREAM /D _VC80_UPGRADE=0x0710 /D _WINDLL /Gm- /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".Debug/" /Fd".\Debug/MyPlugin.pdb" /Gd /TP /wd4244 /wd4305 /wd4018 /analyze- /errorReport:prompt /GR /GS /EHac Source\LSComponentNode.cpp Source\LSSolverNode.cpp Source\PluginMain.cpp Source\LSTetgenNode.cpp Source\soft_body_sim.cpp
+         LSComponentNode.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\source\LSComponentNode.h(3): fatal error C1083: Cannot open include file: 'maya/MPxCommand.h': No such file or directory
+         LSSolverNode.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\source\LSSolverNode.h(3): fatal error C1083: Cannot open include file: 'maya/MPxCommand.h': No such file or directory
+         PluginMain.cpp
+     1>Source\PluginMain.cpp(1): fatal error C1083: Cannot open include file: 'maya/MPxCommand.h': No such file or directory
+         LSTetgenNode.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\source\LSTetgenNode.h(4): fatal error C1083: Cannot open include file: 'maya/MPxCommand.h': No such file or directory
+         soft_body_sim.cpp
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\vega\volumetricMesh.h(316): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\vega\volumetricMesh.h(317): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\vega\volumetricMesh.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\vega\volumetricMesh.h(326): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\vega\volumetricMesh.h(329): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 G:\software\VisualStudio2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>g:\acads\upenn\spring2013\advancedcomputergraphicsandanimation\authoringtool\locosoftmayaplugin\source\soft_body_sim.h(17): fatal error C1083: Cannot open include file: 'tetgen.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "G:\acads\UPenn\Spring2013\AdvancedComputerGraphicsAndAnimation\AuthoringTool\LocoSoftMayaPlugin\MyPlugin.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:09.24

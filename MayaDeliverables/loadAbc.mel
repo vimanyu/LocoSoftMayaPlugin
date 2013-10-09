@@ -1,0 +1,41 @@
+
+global string $importFile;
+global proc browseFiles()
+{
+    string $files[] = `fileDialog2 -fm 1`;
+    //print($files);
+    //print($files[0]);
+    global string $importFile;
+    $importFile = $files[0];
+}
+
+global proc runAbcImportCmd()
+{
+global string $importFile;
+print($importFile);
+AbcImport -mode import $importFile;
+cancel();
+}
+
+global proc cancel()
+{
+    deleteUI LSGUI;
+}
+
+
+
+window -title "LocoSoft load geometry" LSGUI;
+    columnLayout -adj 1;
+        rowLayout -numberOfColumns 2;
+            text "Browse for baked alembic simulation file: ";
+            button -label "Browse" -command "browseFiles()";
+            setParent ..;
+        rowLayout -numberOfColumns 2;
+            button -label "Import" -command "runAbcImportCmd()";
+            button -label "Cancel" -command "cancel()";
+            setParent ..;
+
+showWindow LSGUI;
+
+
+

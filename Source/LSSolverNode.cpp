@@ -130,8 +130,6 @@ MStatus LSSolverNode::compute(const MPlug& plug, MDataBlock& data)
 		MDataHandle userSuppliedDtData = data.inputValue(userSuppliedDt, &returnStatus);
 		McheckErr(returnStatus, "Error getting user supplied dt data handle\n");
 
-		//MDataHandle inputFilePathData = data.inputValue(inputFilePath, &returnStatus);
-		//McheckErr(returnStatus, "Error getting user inputFileData\n");
 
 		MDataHandle integrationTypeData = data.inputValue(integrationType, &returnStatus);
 		McheckErr(returnStatus, "Error getting user integrationTypeData\n");
@@ -248,8 +246,7 @@ MStatus LSSolverNode::compute(const MPlug& plug, MDataBlock& data)
 
 			double contactKs = contactKsData.asDouble();
 			double contactKd = contactKdData.asDouble();
-			//MString inputFilePathMString = inputFilePathData.asString();
-			//string inputFilePathString = inputFilePathMString.asChar();
+
 			if( sm)
 			{
 				delete sm;
@@ -258,11 +255,11 @@ MStatus LSSolverNode::compute(const MPlug& plug, MDataBlock& data)
 				frictionDouble,restitutionDouble,dampingDouble, eleArrayLen, eleArray, vertArrayLen, vertArray,integrationTypeInt,forceModelTypeInt);
 			sm->setContactAttributes(contactKs,contactKd);
 			if (useSuppliedConstraintsBool)
-				sm->initialize("blah",userSuppliedDtDouble, selectedConstraintVertIndices);
+				sm->initialize("",userSuppliedDtDouble, selectedConstraintVertIndices);
 			else
 			{
 				vector<int> empty;
-				sm->initialize("blah",userSuppliedDtDouble, empty);
+				sm->initialize("",userSuppliedDtDouble, empty);
 			}
 			
 			if (useSuppliedForceBool)
