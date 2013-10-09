@@ -1,0 +1,77 @@
+polyCube;
+createNode transform -n Tetgen1; 
+createNode mesh -n TetgenShape1 -p Tetgen1; 
+sets -add initialShadingGroup TetgenShape1; 
+createNode LSTetgenNode -n LSLSTetgenNode1; 
+connectAttr time1.outTime LSLSTetgenNode1.angle; 
+connectAttr pCubeShape1.outMesh LSLSTetgenNode1.inputMesh;
+polyCube;
+connectAttr LSLSTetgenNode1.outputMesh polyCube2.width;
+connectAttr pCube1.worldMatrix[0] LSLSTetgenNode1.wm
+
+/////////////////////////////// Tetgen only
+polyCube;
+createNode transform -n Tetgen1; 
+createNode mesh -n TetgenShape1 -p Tetgen1; 
+sets -add initialShadingGroup TetgenShape1; 
+createNode LSTetgenNode -n LSTetgenNode1; 
+connectAttr pCubeShape1.outMesh LSTetgenNode1.inputMesh;
+connectAttr pCube1.worldMatrix[0] LSTetgenNode1.wm;
+connectAttr LSTetgenNode1.outputMesh TetgenShape1.inMesh;
+
+/////////////////////////////// Tetgen + Solver with custom path
+polyCube;
+createNode transform -n Tetgen1; 
+createNode mesh -n TetgenShape1 -p Tetgen1; 
+sets -add initialShadingGroup TetgenShape1; 
+createNode LSTetgenNode -n TetgenNode1; 
+setAttr TetgenNode1.ofp -type "string" "C:\\user\\vj\\mayaCube";
+connectAttr pCubeShape1.outMesh TetgenNode1.inputMesh;
+connectAttr pCube1.worldMatrix[0] TetgenNode1.wm;
+createNode LSSolverNode;
+connectAttr TetgenNode1.outputMesh LSSolverNode1.restShape;
+connectAttr LSSolverNode1.deformed TetgenShape1.inMesh;
+connectAttr time1.outTime LSSolverNode1.time;
+connectAttr TetgenNode1.ofp LSSolverNode1.ifp;
+
+/////////////////////////////// Tetgen + Solver with custom path and bunny
+createNode transform -n Tetgen1; 
+createNode mesh -n TetgenShape1 -p Tetgen1; 
+sets -add initialShadingGroup TetgenShape1; 
+createNode LSTetgenNode -n TetgenNode1; 
+setAttr TetgenNode1.ofp -type "string" "C:\\Users\\Mike\\Documents\\UPenn\\CIS-660_(Adv_Topics_in_CG)\\Assignments\\Authoring Tool Project\\LocoSoft Maya\\mayaCube";
+connectAttr bunny:MeshShape.outMesh TetgenNode1.inputMesh;
+connectAttr bunny:Mesh.worldMatrix[0] TetgenNode1.wm;
+createNode LSSolverNode;
+connectAttr TetgenNode1.outputMesh LSSolverNode1.restShape;
+connectAttr LSSolverNode1.deformed TetgenShape1.inMesh;
+connectAttr time1.outTime LSSolverNode1.time;
+connectAttr TetgenNode1.ofp LSSolverNode1.ifp;
+
+/////////////////////////////// Tetgen + Solver with H shape
+createNode transform -n Tetgen1; 
+createNode mesh -n TetgenShape1 -p Tetgen1; 
+sets -add initialShadingGroup TetgenShape1; 
+createNode LSTetgenNode -n TetgenNode1; 
+setAttr TetgenNode1.ofp -type "string" "C:\\Users\\Mike\\Documents\\UPenn\\CIS-660_(Adv_Topics_in_CG)\\Assignments\\Authoring Tool Project\\LocoSoft Maya\\mayaH";
+connectAttr Trim_Char_H_1_1Shape.outMesh TetgenNode1.inputMesh;
+connectAttr Trim_Char_H_1_1.worldMatrix[0] TetgenNode1.wm;
+createNode LSSolverNode;
+connectAttr TetgenNode1.outputMesh LSSolverNode1.restShape;
+connectAttr LSSolverNode1.deformed TetgenShape1.inMesh;
+connectAttr time1.outTime LSSolverNode1.time;
+connectAttr TetgenNode1.ofp LSSolverNode1.ifp;
+
+
+createNode transform -n Tetgen2; 
+createNode mesh -n TetgenShape2 -p Tetgen2; 
+sets -add initialShadingGroup TetgenShape2; 
+createNode LSTetgenNode -n TetgenNode2; 
+setAttr TetgenNode2.ofp -type "string" "C:\\Users\\Mike\\Documents\\UPenn\\CIS-660_(Adv_Topics_in_CG)\\Assignments\\Authoring Tool Project\\LocoSoft Maya\\mayaI";
+connectAttr Trim_Char_I_1_1Shape.outMesh TetgenNode2.inputMesh;
+connectAttr Trim_Char_I_1_1.worldMatrix[0] TetgenNode2.wm;
+createNode LSSolverNode -n LSSolverNode2;
+connectAttr TetgenNode2.outputMesh LSSolverNode2.restShape;
+connectAttr LSSolverNode2.deformed TetgenShape2.inMesh;
+connectAttr time1.outTime LSSolverNode2.time;
+connectAttr TetgenNode2.ofp LSSolverNode2.ifp;
