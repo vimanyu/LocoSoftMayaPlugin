@@ -292,9 +292,9 @@
     <Link>
       <AdditionalOptions>/export:initializePlugin /export:uninitializePlugin  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;OpenMayaAnim.lib;OpenMaya.lib;OpenMayaRender.lib;Foundation.lib;tetgend64.lib;Vegad.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\LocoSoftd.mll</OutputFile>
+      <OutputFile>.\MayaDeliverables\LocoSoftd.mll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>G:\software\Autodesk\Maya2012\lib;C:\Program Files\Autodesk\Maya2013\lib;.\tetgen\lib\x64\debug\;.\vega\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>G:\software\Autodesk\Maya2013\lib;C:\Program Files\Autodesk\Maya2013\lib;.\tetgen\lib\x64\debug\;.\vega\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/MyPlugin.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -387,7 +387,7 @@
     <Link>
       <AdditionalOptions>/export:initializePlugin /export:uninitializePlugin  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;OpenMaya.lib;OpenMayaAnim.lib;OpenMayaRender.lib;Foundation.lib;tetgen64.lib;Vega.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\LocoSoft.mll</OutputFile>
+      <OutputFile>.\MayaDeliverables\LocoSoft.mll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>G:\software\Autodesk\Maya2013\lib;C:\Program Files\Autodesk\Maya2013\lib;.\tetgen\lib\x64\release;.\vega\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/MyPlugin.pdb</ProgramDatabaseFile>

@@ -413,8 +413,7 @@ MStatus LSSolverNode::initialize()
 	MAKE_INPUT(nAttr);
 
 
-//	inputFilePath = tAttr.create("InputFilePath", "ifp", MFnData::kString, &returnStatus);
-//	McheckErr(returnStatus, "ERROR creating LSSolverNode inputFilePath\n");
+
 
 	integrationType = eAttr.create("timeIntegrationMethod","it",0,&returnStatus);
 	McheckErr(returnStatus, "ERROR creating LSSolverNode integrationType\n");
@@ -571,11 +570,7 @@ MStatus LSSolverNode::buildOutputMesh(MFnMesh& inputMesh, float* vertices, MObje
 		MIntArray polyVerts;
 		inputMesh.getPolygonVertices( i, polyVerts );
 		int pvc = polyVerts.length();
-		//MString txt;
-		//txt = MString("Polygon:")+i;
-		//txt+="\n [";
 
-		//std::cout<<txt<<std::endl;
 		face_connects[faceConnectsIdx++] = polyVerts[0];
 		face_connects[faceConnectsIdx++]= polyVerts[1];
 		face_connects[faceConnectsIdx++] = polyVerts[2];

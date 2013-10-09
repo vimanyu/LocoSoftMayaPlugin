@@ -118,13 +118,8 @@ SoftBodySim::SoftBodySim(double youngsMod, double poisRatio, double density,
 
 void SoftBodySim::initialize(std::string filename, float dt,const std::vector<int>& constrainedVIndices)
 {
-//	if (in_elements_size != 0)
-//	{
-		//std::cout << "Creating tetMesh from vertices and indices array" << std::endl;
-		createTetMesh();
-//	}
-//	else
-//		createTetMeshFromFile();
+	createTetMesh();
+
 
 	numOfVertices  = tetMesh->getNumVertices();
 	tetMesh->setSingleMaterial(youngsModulus, poissonRatio, objectDensity);
@@ -163,9 +158,7 @@ void SoftBodySim::initialize(std::string filename, float dt,const std::vector<in
 		m_forces[i] = 0;
 	}
 
-	//TODO make sure triangle_list is initialized properly
-	//m_triangle_list.reserve(numOfFaces);
-	//compute_normal();
+
 
 	if( forceModelType == 0)
 	{
@@ -190,12 +183,7 @@ void SoftBodySim::initialize(std::string filename, float dt,const std::vector<in
 	// to keep it at 0, which implies a symmetric, non-PD solve.
 	// With CG, this option is ignored.
 	int positiveDefiniteSolver = 0;
-	// constraining vertices 4, 10, 14 (constrained DOFs are specified 0-indexed):
-	//int numConstrainedDOFs = 9;
-	//int constrainedDOFs[9] = { 0, 1, 2,3,4,5,12,13,14,15,16,17};
 
-	//int numConstrainedDOFs = 0;
-	//int* constrainedDOFs = (int*)0;
 
 	int numConstrainedDOFs = 3*constrainedVIndices.size();
 	int* constrainedDOFs = (int*)0;
@@ -213,7 +201,6 @@ void SoftBodySim::initialize(std::string filename, float dt,const std::vector<in
 
 	// (tangential) Rayleigh damping
 	float dampingMassCoef = 0.0; // "underwater"-like damping (here turned off)
-	//float dampingStiffnessCoef = 0.05; // (primarily) high-frequency damping
 	float dampingStiffnessCoef = damping;
 	// initialize the integrator
 	
@@ -250,7 +237,6 @@ void SoftBodySim::initialize(std::string filename, float dt,const std::vector<in
 	0,numConstrainedDOFs, constrainedDOFs,
 	dampingMassCoef);
 	}
-	//massMatrix = SparseMatrix::CreateIdentityMatrix(3*numOfVertices);
 }
 
 void SoftBodySim::createTetMesh()
@@ -258,14 +244,6 @@ void SoftBodySim::createTetMesh()
 	tetMesh = new TetMesh(in_vertices_size / 3.0, in_vertices, in_elements_size / 4.0, in_elements);
 }
 
-//void SoftBodySim::createTetMeshFromFile()
-//{
-//	char* filePath = new char[inputFilePath.size()+1];
-//	std::copy(inputFilePath.begin(), inputFilePath.end(), filePath);
-//	filePath[inputFilePath.size()] = '\0';
-//	tetMesh = new TetMesh(filePath, 0);
-//	delete [] filePath;
-//}
 
 void SoftBodySim::copyPointlist(const tetgenio &out)
 {
@@ -289,10 +267,8 @@ void SoftBodySim::copyPointlist(const tetgenio &out)
 void SoftBodySim::setupTrifaces(const tetgenio &out)
 {
 	numOfFaces = out.numberoftrifaces;
-	//m_vertices = new float[out.numberoftrifaces*3];
 	
-	// temp debug
-	//int mvindex = 0;
+
 	for(int i = 0 ; i < out.numberoftrifaces*3 ; i++)
 	{
 		// NOTE: as required and defined in cube.poly, the node indices start at 1 so we have to subtract 1 here to use the indices as array indices
@@ -320,19 +296,13 @@ void SoftBodySim::addExternalForces()
 	}
 	addUserForces();
 
-	////Add collision forces here too
-	//for (int i=1; i<3*numOfVertices; i= i+3)
-	//{
-	//	if( m_vertices[i] <=0.0)
-	//		m_forces[i]+=30;
-	//}
+
 
 	//Collision layer
 	int r = 3*numOfVertices;
 	double* d = new double[r];
 	double* v = new double[r];
-	//const float friction = 0.98f;
-	//const float restitution = 0.4f;
+
 
 	integratorBaseSparse->GetqState(d,v);
 	
@@ -361,19 +331,13 @@ void SoftBodySim::addExternalForces()
 				vt*= friction;
 				pVelocity = vn+vt;
 
-				//std::cout<<"Velocity before contact:("<<
-				//	pVelocity.x<<","<<pVelocity.y<<","<<pVelocity.z<<")"<<std::endl;
+
 				glm::vec3 reflVelocity = pVelocity - 2.0f*( glm::dot(pVelocity,normal))*normal ;
 
 				v[i-1] = reflVelocity.x;
 				v[i]   = reflVelocity.y;
 				v[i+1] = reflVelocity.z;
 				
-				//std::cout<<"Velocity after contact:("<<
-				//	reflVelocity.x<<","<<reflVelocity.y<<","<<reflVelocity.z<<")"<<std::endl;
-				//
-				//std::cout<<"Original disp before contact:("<<
-				//	d[i-1]<<","<<d[i]<<","<<d[i+1]<<")"<<std::endl;	
 
 				pPosition += fabs(dist)*normal;
 				glm::vec3 displacement = pPosition - originalPosition;
@@ -381,8 +345,6 @@ void SoftBodySim::addExternalForces()
 				d[i]    = displacement.y;
 				d[i+1]  = displacement.z;
 
-				//std::cout<<"Displacement after contact:("<<
-				//	d[i-1]<<","<<d[i]<<","<<d[i+1]<<")"<<std::endl;	
 				continue;
 			}
 
@@ -423,21 +385,6 @@ void SoftBodySim::update()
 	clearForces();
 	addExternalForces();
 
-	//for(int i = 0 ; i < 3 * numOfVertices ; i++)
-	//{
-	//	if( i % 3 == 1)
-	//		std::cout << m_vertices[i] << std::endl;
-	//}
-
-	//std::cout << "end of iteration" << std::endl;
-	//double * f = new double[r];
-	//for(int j=0; j<r; j++)
-	//{
-	//	if( j % 3 == 1)
-	//		f[j] = -9.8;
-	//	else
-	//		f[j] = 0;
-	//}
 	
 	integratorBaseSparse->SetExternalForces(m_forces);
 
@@ -445,39 +392,15 @@ void SoftBodySim::update()
 	integratorBaseSparse->DoTimestep();
 
 	double * u = new double[r];
-	//double* acc = new double[r];
 	integratorBaseSparse->GetqState(u,m_velocities);
 	for(int i=0; i< 3 * numOfVertices; i++)
 	{
 		m_vertices[i]=m_restVertices[i] +  u[i];
 	}
-	//std::cout<<"OUR CALCULATION"<<std::endl;
-	//for(int i=0; i<numOfVertices; i++)
-	//{
-	//	std::cout<< m_vertices[3*i]<<","<<m_vertices[3*i+1]<<","<<m_vertices[3*i+2]<<std::endl;
-	//}
+
 	clearForces();
 	
-	/*std::cout<<"TOTAL MASS: "<<integratorBaseSparse->GetTotalMass()<<std::endl;
 
-	std::cout<< "Acceleration: "<<std::endl;
-	for(int i = 0; i<3*numOfVertices; i=i+3)
-	{
-		std::cout<< acc[i+1]<<std::endl;
-	}*/
-	
-	//handleContacts();
-	// compute normals here
-	//compute_normal();
-	//double* fint = new double[r];
-	//forceModel->GetInternalForce(u,fint);
-	//std::cout<< "Forces: "<<std::endl;
-	//for(int i = 0; i<3*numOfVertices; i=i+3)
-	//{
-	//	std::cout<< fint[i+1]<<std::endl;
-	//}
-
-	//delete[] u;
 }
 
 void SoftBodySim::handleContacts()
@@ -496,7 +419,6 @@ void SoftBodySim::handleContacts()
 	}
 
 	double * v = new double[r];
-	//std::copy(m_vertices,m_vertices+r, u);
 	std::copy(m_velocities, m_velocities+r, v);
 	integratorBaseSparse->SetqState(u,v);
 
@@ -530,19 +452,13 @@ void SoftBodySim::setUserForceAttributes(double fMag, const std::vector<double>&
 	forceStartTime = fStartT;
 	forceStopTime = fStopT;
 
-	//fMagnitude = 10;
-	//fFrequency = 10;
-	//fDirection = Vec3d(0,-1,0);
-	//fVertexIndices.push_back(3);
-	//fVertexIndices.push_back(5);
+
 }
 
 void SoftBodySim::addUserForces()
 {
 	Vec3d userForce = fMagnitude*fDirection;
-	//forceApplicationTime = 100;
-	//forceReleasedTime = 150;
-	//forceIncrementTime = 10;
+
 
 	timer++;
 	globalTimer++;
@@ -571,31 +487,6 @@ void SoftBodySim::addUserForces()
 				timer = forceStartTime;
 			}
 
-
-			//if(timer<100+ fFrequency/4)
-			//{
-			//	m_forces[3*fVertexIndices[i]]+= userForce[0];
-			//	m_forces[3*fVertexIndices[i]+1]+= userForce[1];
-			//	m_forces[3*fVertexIndices[i]+2]+= userForce[2];
-			//}
-			//else if(timer<100+ fFrequency/2)
-			//{
-			//	m_forces[3*fVertexIndices[i]]+= 2*userForce[0];
-			//	m_forces[3*fVertexIndices[i]+1]+= 2*userForce[1];
-			//	m_forces[3*fVertexIndices[i]+2]+= 2*userForce[2];
-			//}
-
-			//else if(timer<100+ fFrequency)
-			//{
-			//	m_forces[3*fVertexIndices[i]]+= 4*userForce[0];
-			//	m_forces[3*fVertexIndices[i]+1]+= 4*userForce[1];
-			//	m_forces[3*fVertexIndices[i]+2]+= 4*userForce[2];
-			//}
-
-			//else if(timer > 2*fFrequency+100)
-			//{
-			//	timer = 100;
-			//}
 		}
 	}
 

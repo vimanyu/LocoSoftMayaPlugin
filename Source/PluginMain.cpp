@@ -43,18 +43,11 @@ MStatus initializePlugin( MObject obj )
 	MGlobal::executeCommand(MString("menuItem -l \"Load Geometry\" -echoCommand true -command \"source \\\"") +
 									plugin.loadPath()+ "/loadAbc.mel" +"\\\"\" TetgenMenuItem7;" );
 
-	//char buffer[2048];
-	//sprintf_s(buffer, 2048, "source \"G:/acads/UPenn/Spring2013/AdvancedComputerGraphicsAndAnimation/hw2/MayaPluginHw2/ui.mel\";", plugin.loadPath());
-	//MGlobal::executeCommand(buffer,true);
+
 	status = plugin.registerNode("LSTetgenNode",LSTetgenNode::id,LSTetgenNode::creator, LSTetgenNode::initialize);
     status = plugin.registerNode("LSSolverNode",LSSolverNode::id,LSSolverNode::creator, LSSolverNode::initialize);
 	status = plugin.registerNode("LSComponentNode", LSComponentNode::id, LSComponentNode::creator, LSComponentNode::initialize);
 
-	//status = plugin.registerCommand( "TetgenCmd", TetgenCmd::creator, TetgenCmd::newSyntax );
-    //if (!status) {
-    //    status.perror("registerCommand");
-    //    return status;
-    //}
 
     return status;
 }

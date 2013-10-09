@@ -94,9 +94,7 @@ MStatus LSTetgenNode::compute(const MPlug& plug, MDataBlock& data)
 		////////////////
 		// Use Tetgen //
 		////////////////
-		//MFnMeshData testInputMeshDataCreator;
-		//MObject testInputMesh = testInputMeshDataCreator.create(&stat);
-		//makeDummyMesh(testInputMesh,stat);
+
 		
 		MFnMeshData tetMeshDataCreator;
 		MObject tetMesh = tetMeshDataCreator.create(&stat);
@@ -104,7 +102,6 @@ MStatus LSTetgenNode::compute(const MPlug& plug, MDataBlock& data)
 
 		outputMeshData.set(tetMesh);
 
-		// setting up outputVerticesArray and outputElementsArray
 		
 		// first compute the arrays and store in verts and ele
 		MDoubleArray verts;
@@ -267,9 +264,7 @@ void LSTetgenNode::toTetMesh(MObject &inputMesh, MObject &outputMesh, MMatrix &w
 {
 	toTetgenIO(inputMesh, wmat);
 
-	//in.save_poly("C:\\Users\\Mike\\Documents\\UPenn\\CIS-660_(Adv_Topics_in_CG)\\Assignments\\Authoring Tool Project\\LocoSoft Maya\\mayaCube");
-	//in.save_nodes("C:\\Users\\Mike\\Documents\\UPenn\\CIS-660_(Adv_Topics_in_CG)\\Assignments\\Authoring Tool Project\\LocoSoft Maya\\mayaCube");
-	
+
 	// parsing double arguments
 	ostringstream strs;
 	strs << radEdgeRatio;
@@ -297,7 +292,6 @@ void LSTetgenNode::toTetMesh(MObject &inputMesh, MObject &outputMesh, MMatrix &w
 	out.save_faces(path);
 	}
 
-	//toOutTriMesh(out,outputMesh);
 	toOutTetMesh(outputMesh);
 
 	delete [] path;
