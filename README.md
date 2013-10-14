@@ -38,14 +38,14 @@ Note that since Alembic support only available in Maya 2013. This means that Bak
 -------------------------------------------------------------------------------
 VIDEOS
 -------------------------------------------------------------------------------
-For a general overview of the project,
-[![ScreenShot](https://raw.github.com/vimanyu/LocoSoftMayaPlugin/master/images/videoLink1.png)](http://youtu.be/9maF-S3pmAI)
-
-For results,
-[![ScreenShot](https://raw.github.com/vimanyu/LocoSoftMayaPlugin/master/images/videoLink2.png)](http://youtu.be/jITIfyKzRcc)
-
 For a sample workflow video,
 [![ScreenShot](https://raw.github.com/vimanyu/LocoSoftMayaPlugin/master/images/videoLink3.png)](http://youtu.be/_MVScjAs3-o)
+
+For a general overview of the project,
+[![ScreenShot](https://raw.github.com/vimanyu/LocoSoftMayaPlugin/master/images/videoLink2.png)](http://youtu.be/9maF-S3pmAI)
+
+For results,
+[![ScreenShot](https://raw.github.com/vimanyu/LocoSoftMayaPlugin/master/images/videoLink1.png)](http://youtu.be/jITIfyKzRcc)
 
 -------------------------------------------------------------------------------
 THIRD PARTY LIBRARIES
