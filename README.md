@@ -34,14 +34,19 @@ Note that since Alembic support only available in Maya 2013. This means that Bak
 VIDEO OVERVIEW
 -------------------------------------------------------------------------------
 For a general overview of the project, please visit: http://youtu.be/9maF-S3pmAI
+
 For results, please visit: http://youtu.be/jITIfyKzRcc
+
 For a sample workflow video, please visit: http://youtu.be/_MVScjAs3-o
 
 -------------------------------------------------------------------------------
 THIRD PARTY LIBRARIES
 -------------------------------------------------------------------------------
 VegaFEM: http://run.usc.edu/vega/
+
 Tetgen: http://wias-berlin.de/software/tetgen/
+
 GLM: http://glm.g-truc.net/0.9.4/index.html
+
 
 
