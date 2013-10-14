@@ -36,7 +36,7 @@ The LocoSoft.mll (release) and LocoSoftd.mll can be found in the "mayaDeliverabl
 Note that since Alembic support only available in Maya 2013. This means that Bake Geometry and Load Geometry will only work in Maya 2013.
 
 -------------------------------------------------------------------------------
-VIDEO OVERVIEW
+VIDEOS
 -------------------------------------------------------------------------------
 For a general overview of the project, please visit: http://youtu.be/9maF-S3pmAI
 
